@@ -1,0 +1,41 @@
+<html>
+    <head></head>
+    <body>
+        <h3>Tambah Barang</h3>
+        <form id="form">
+            <label for="name">Nama Barang:</label><br />
+            <input type="text" name="name" required />
+            <br /><br />
+            <label for="harga">Harga Barang:</label><br />
+            <input type="text" name="harga" required />
+            <br /><br />
+            <label for="date">Tanggal Masuk:</label><br />
+            <input type="date" name="date" required />
+            <br /><br />
+            <label for="keterangan">Keterangan:</label><br />
+            <textarea type="text" name="keterangan" required></textarea>
+            <br /><br />
+            <input type="submit" />
+        </form>
+
+        <script>
+            const electron = require("electron");
+            const {
+                ipcRenderer
+            } = electron;
+
+            const form = document.getElementById("form");
+            const elements = {};
+
+            form.addEventListener("submit", event =>{
+                event.preventDefault();
+
+                for (let i = 0; i < form.elements.length; i++){
+                    if (form.elements[i].type !== "submit")
+                        elements[form.elements[i].name] = form.elements[i].value;
+                }
+                ipcRenderer.send("appointment:create", elements);
+            });
+        </script>
+    </body>
+</html>    

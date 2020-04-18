@@ -1,0 +1,26 @@
+<html>
+    <head></head>
+    <body>
+        <h1>Pembelian</h1>
+        <div id="beli">
+
+              <p>Jumlah Barang : </p><select id="list" onchange="updateHarga()">
+                <option value="" disabled selected>Pilih Barang</option>
+                <script type="text/javascript">
+                  option.forEach(val => {
+                    document.write(`<option value="${val}">${val}</option>`);
+                  });
+                </script>
+              </select>
+              <br>
+              <br>
+              Jumlah Barang : 
+              <br>
+              <input type="text" name="Jumlah Barang">
+              <br>
+              <br>
+              <input type="submit">
+            </div>
+            
+    </body>
+</html>
